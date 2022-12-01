@@ -26,6 +26,30 @@ $white:#f2e9e4;
 
 $formbgcolor: $grey;
 
+
+//----------QUESTIONS & ANSWERS-----
+
+$div_border: solid #A3C7D6 4px;
+$div_border_radius: 4px;
+
+$background_color_question:#624F82;
+
+$background_color_answers:#9F73AB;
+
+/*---ANSWER BLOCK--*/
+$background_color_oneanswer:#A3C7D6;
+$color_oneanswer:#9F73AB;
+$border_oneanswer: solid #3F3B6C 1px;
+$border_radius_oneanswer: 3px;
+
+$padding_oneanswer: 0 10px;
+$margin_oneanswer: 10px 0;
+
+$transition_oneanswer:0.4s;
+$shadow_oneanswer: 5px 5px 10px -2px rgba(48, 32, 68, 0.76);
+
+$transforme_oneanswer: scale(1.1);
+
 //---------------------------------
 //-----------BREAKPOINTS-----------
 //---------------------------------
