@@ -8,14 +8,19 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView
   },
   {
-    path: '/questions',
-    name: 'questions',
-    component: () => import('@/views/QuestionView.vue')
+    path: '/questionList',
+    name: 'questionList',
+    component: () => import('@/views/QuestionListView.vue')
   },
   {
     path:'/collection',
     name:'collection',
     component: () => import('@/views/CollectionView.vue')
+  },
+  {
+    path:'/question',
+    name:'question',
+    component: () => import('@/views/QuestionView.vue')
   }
 ]
 
