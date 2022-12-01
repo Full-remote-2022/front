@@ -4,6 +4,9 @@
         <router-link to="/question">Question</router-link>
         <router-link to="/collection">Collection</router-link>
         <router-link to="/play">Play</router-link>
+        <router-link to="/logIn">Log In</router-link>
+        <router-link to="/signUp">Sign Up</router-link>
+
     </nav>
 </template> 
 <script setup lang="ts">

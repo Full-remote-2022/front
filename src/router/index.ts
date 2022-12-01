@@ -21,7 +21,18 @@ const routes: Array<RouteRecordRaw> = [
     path:'/question',
     name:'question',
     component: () => import('@/views/QuestionView.vue')
+  },
+  {
+    path:'/logIn',
+    name:'logIn',
+    component: () => import('@/views/logIn.vue')
+  },
+  {
+    path:'/signUp',
+    name:'signUp',
+    component: () => import('@/views/signUp.vue')
   }
+
 ]
 
 const router = createRouter({
