@@ -1,18 +1,42 @@
 <template>
     <div>
-        <label for="e_mail">E-mail</label>
-       <input id="e_mail" type="text" placeholder="enter a valid e-mail">
-       <label for="e_mail_confirm">E-mail confirmation</label>
-       <input id ="e_mail_confirm" type="text" placeholder="confirm the e-mail">
         <label for="username">Username</label>
-       <input id="username" type="text" placeholder="enter a username">
+       <input ref="username" id="username" type="text" placeholder="enter a username">
         <label for="password">Password</label>
-       <input id="password" type="text" placeholder="chose a password">
-       <button>Sign Up</button>
+       <input ref="password" id="password" type="text" placeholder="chose a password">
+       <label for="password_confirm">Confirm your password</label>
+       <input ref="password_confirm" id="password_confirm" type="text" placeholder="confirm your password">
+       <button ref="sign_up" id="sign_up" @click="whenshitdonthappen">Sign Up</button>
+       <p ref="error_message"></p>
     </div>
 </template>
 
 <script setup lang="ts">
+import { ref,onMounted } from 'vue'
+
+const username = ref<HTMLInputElement | null>(null);
+const password = ref<HTMLInputElement | null>(null);
+const password_confirm = ref<HTMLInputElement | null>(null);
+const sign_up = ref<HTMLInputElement | null>(null);
+const error_message = ref<HTMLInputElement | null>(null);
+
+
+function whenshitdonthappen(){
+    if(username.value==null || password.value==null || password_confirm.value==null || sign_up.value==null || error_message.value==null) 
+    return;
+    if (username.value.value !== "" && password.value.value!=="" && password_confirm.value.value!=="")
+        if (password.value.value===password_confirm.value.value){
+            error_message.value.innerText="You have signed up !"
+        }
+        else{
+            error_message.value.innerText="Please make sure to have a correct e-mail or enter a valid password";
+        }
+    else {
+        error_message.value.innerText="Please make sure to have a correct e-mail or enter a valid password";
+    } 
+}
+
+
 
 </script>
 
