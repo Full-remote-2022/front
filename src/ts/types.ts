@@ -10,3 +10,11 @@ export interface Question {
     questionText: string,
     answers: Answer[],
 }
+
+export enum Rarity {
+    Common = "common",
+    Uncommon = "uncommon",
+    Rare = "rare",
+    Epic = "epic",
+    Legendary = "legendary",
+}
