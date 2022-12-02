@@ -35,7 +35,7 @@ function login(){
     if (password_login.value?.value=="" || username_login.value?.value=="") return;
     //login to serv
     //TODO
-    store.token="token";
+    store.setToken("token");
     //redirect to home
     router.push('/');
 }

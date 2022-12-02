@@ -6,12 +6,16 @@ import { Answer } from '@/ts/types'
 export const useStore = defineStore('main', {
     state: () => {
         return {
-            token: '',
+          //load from local storage
+          token: localStorage.getItem('token') ||'',
         }
       },
       actions: {
         setToken(token: string) {
           this.token = token
+          //update local storage
+          localStorage.setItem('token', token)
+          
         },
 
         isConnected() {
@@ -19,6 +23,7 @@ export const useStore = defineStore('main', {
         },
         Disconect() {
           this.token = ''
+          localStorage.removeItem('token')
         }
 
       },
