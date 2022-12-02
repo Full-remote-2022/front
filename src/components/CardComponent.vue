@@ -6,16 +6,15 @@
         <div class="card__wrapper">
             <div :class="{'card__3d':true,'enable':hover}">
                 <div class="topHeader">
-                    <RarityTag :rarity="Rarity.Rare"/>
-                    <p>TITLE NAME</p>
+                    <RarityTag :rarity="cardProp.cardRarity"/>
+                    <p>{{cardProp?.cardTitle}}</p>
                 </div>
                 <div class="card__image">
-                    <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="" />
+                    <!-- require(`@/assets/${card.cardImage}`) -->
+                    <img :src="require(`@/assets/${cardProp.cardImage}`)" alt="" />
                 </div>
                 <div class="infos">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae. Lorem ipsum dolor sit,
-                         amet consectetur adipisicing elit. Voluptate, neque! Voluptate magni at nisi magnam non ducimus
-                          quasi illo voluptatem fugit nobis nulla, ratione accusantium debitis soluta totam laudantium iusto?</p>
+                    <p>{{cardProp.cardText}}</p>
                 </div>
                 <!--layers for visual effect-->
                 <div :class="{'card__layer1':true,'hiden_layout':false}"></div>
@@ -32,7 +31,7 @@ import { Rarity, Card } from '@/ts/types';
 //props
 //eslint-disable-next-line
 const props = defineProps({
-    card: {
+    cardProp: {
         type: Object as () => Card,
         required: true
     }
@@ -69,7 +68,6 @@ onMounted(() => {
             Y = (e.clientY - b.top + window.scrollY) / h;
         }
         
-        console.log(X,Y);
         let rX = -(X - 0.5) * 26;
         let rY = (Y - 0.5) * 26;
 
