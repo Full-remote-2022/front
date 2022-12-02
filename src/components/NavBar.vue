@@ -1,7 +1,7 @@
 <template>
     <nav>
         <p>LOGO</p>
-        <router-link to="/question">Question</router-link>
+        <router-link to="/themes">Themes</router-link>
         <router-link to="/collection">Collection</router-link>
         <router-link to="/play">Play</router-link>
         <router-link to="/logIn">Log In</router-link>

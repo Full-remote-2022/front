@@ -15,7 +15,7 @@ export interface Card {
     cardText: string,
     cardTitle: string,
     cardImage: string,
-    cardExpiratinoDate: Date,
+    cardExpirationDate: Date,
     cardRarity: Rarity,
 }
 

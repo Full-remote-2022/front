@@ -8,9 +8,9 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView
   },
   {
-    path: '/questionList',
-    name: 'questionList',
-    component: () => import('@/views/QuestionListView.vue')
+    path: '/themes',
+    name: 'themes',
+    component: () => import('@/views/ThemesListView.vue')
   },
   {
     path:'/collection',
@@ -18,9 +18,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/CollectionView.vue')
   },
   {
-    path:'/question',
-    name:'question',
-    component: () => import('@/views/QuestionView.vue')
+    path:'/theme/:name',
+    name:'theme',
+    component: () => import('@/views/ThemeView.vue')
   },
   {
     path:'/logIn',

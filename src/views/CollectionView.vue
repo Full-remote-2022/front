@@ -19,7 +19,7 @@ function getCards():void {
             cardTitle: "Card",
             cardRarity: Rarity.Common,
             cardImage: "https://i.imgur.com/1ZQ3Z0M.png",
-            cardExpiratinoDate: new Date(),
+            cardExpirationDate: new Date(),
 
         }
         cards.value.push(card);
