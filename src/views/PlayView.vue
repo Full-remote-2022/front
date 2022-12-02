@@ -1,7 +1,7 @@
 <template>
     <div>
         <img src="@/assets/late.svg" alt="late">
-        <p>Désolé la page n'est pas encore accessible et ne le sera jamais car on n'a plus <span>d</span><span>e</span> <span>t</span><span>e</span><span>.</span><span>.</span><span>.</span></p>
+        <p>Désolé la page n'est pas encore accessible et ne le sera jamais car on n'a plus <span>d</span><span>e</span> <span>t</span><span>e</span><span>m</span><span>p</span><span>s</span></p>
     </div>
 </template>
 <script setup lang="ts">
