@@ -10,21 +10,48 @@
 
 $red:rgb(223, 52, 52);
 $dark-red :#64141ecc;
-$white: white;
 $orange: #FCA311;
 $dark-blue: #14213D;
 $grey: #E5E5E5;
 
 
-$dark:#22223b;
+$dark:#29292b;
 $dark2: rgb(34, 34, 59,0.85);
 $blue:#4a4e69;
 $better-blue: #273494;
 $marron:#9a8c98;
 $marronlight:#c9ada7;
-$white:#f2e9e4;
+$white:#f2f2f2;
+$highlight:#e07a5f;
 
 $formbgcolor: $grey;
+
+$pink :#e1a1e3;
+$purple :#58214e;
+
+
+//----------QUESTIONS & ANSWERS-----
+
+$div_border: solid #A3C7D6 4px;
+$div_border_radius: 4px;
+
+$background_color_question:#624F82;
+
+$background_color_answers:#9F73AB;
+
+/*---ANSWER BLOCK--*/
+$background_color_oneanswer:#A3C7D6;
+$color_oneanswer:#9F73AB;
+$border_oneanswer: solid #3F3B6C 1px;
+$border_radius_oneanswer: 3px;
+
+$padding_oneanswer: 0 10px;
+$margin_oneanswer: 10px 0;
+
+$transition_oneanswer:0.4s;
+$shadow_oneanswer: 5px 5px 10px -2px rgba(48, 32, 68, 0.76);
+
+$transforme_oneanswer: scale(1.1);
 
 //---------------------------------
 //-----------BREAKPOINTS-----------
@@ -46,9 +73,10 @@ $formbgcolor: $grey;
 //----------------------------------
 //-----------GLOBAL STYLE-----------
 //----------------------------------
-
 *{
     font-family: 'Raleway', sans-serif;
+    margin:0;
+    padding: 0;
 }
 
 .noselect {

@@ -1,11 +1,11 @@
 <template>
     <div>
-        
+        in progress...
     </div>
 </template>
 <script setup lang="ts">
 
 </script>
-<style scoped lang="scss">
+<style lang="scss" scoped>
     
 </style>

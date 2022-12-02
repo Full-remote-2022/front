@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <a href="https://www.flaticon.com/free-icons/deck" title="deck icons">Deck icons created by Freepik - Flaticon</a>
   </div>
 </template>
 
