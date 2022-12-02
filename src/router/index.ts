@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/play',
     name: 'play',
-    component: () => import('@/views/HomeView.vue')
+    component: () => import('@/views/PlayView.vue')
   },
   {
     path:'/collection',
