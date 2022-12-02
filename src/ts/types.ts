@@ -26,3 +26,8 @@ export enum Rarity {
     Epic = "epic",
     Legendary = "legendary",
 }
+
+export interface Theme {
+    nomTheme : string,
+    nombreQuestions : number,
+}

@@ -2,6 +2,7 @@
     <nav>
         <p>LOGO</p>
         <router-link to="/question">Question</router-link>
+        <router-link to="/questionList">Theme</router-link>
         <router-link to="/collection">Collection</router-link>
         <router-link to="/play">Play</router-link>
         <router-link to="/logIn">Log In</router-link>
