@@ -8,6 +8,8 @@ export const useStore = defineStore('main', {
         return {
           //load from local storage
           token: localStorage.getItem('token') ||'',
+          //get from .env
+          apiURL:"",
         }
       },
       actions: {
@@ -15,7 +17,7 @@ export const useStore = defineStore('main', {
           this.token = token
           //update local storage
           localStorage.setItem('token', token)
-          
+
         },
 
         isConnected() {
