@@ -14,7 +14,7 @@ let themes = ref<Theme[]>([])
 function getThemes(){
     for (let i=0; i<4; i++){
         themes.value.push(
-            {nomTheme:"Jean"+i,
+            {nomTheme:"Theme "+i,
         nombreQuestions:5}
         )
     }
