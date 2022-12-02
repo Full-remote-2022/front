@@ -29,7 +29,7 @@ theme.value = router.currentRoute.value.params.name;
 
 function getQuestionsFromTheme():void {
     //push 3 random questions from theme to questions
-    for(let i = 0; i < 3; i++){
+    for(let i = 1; i <= 5; i++){
         let question:Question = {
             questionID: i,
             questionText: "Question "+i,
@@ -78,19 +78,53 @@ function goToThemeList():void {
     router.push({name: "themes"});
 }
 
-function getReward():void {
-   //get random card from cardsJOSN
-    let json = JSON.parse(JSON.stringify(cardsJSON));
-    let i = Math.floor(Math.random() * json.cards.length);
-    let card:Card = {
-        cardTitle: json.cards[i].cardTitle,
-        cardText: json.cards[i].cardText,
-        cardRarity: json.cards[i].cardRarity as Rarity,
-        cardImage: json.cards[i].cardImage,
-        cardExpirationDate: new Date(),
-        color: json.cards[i].color,
+function getRarityFromScore(score:number):Rarity {
+    if(score < 5){
+        return Rarity.Common;
     }
-    cardReward.value = card;
+    else if(score < 10){
+        return Rarity.Uncommon;
+    }
+    else if(score < 15){
+        return Rarity.Rare;
+    }
+    else if(score < 20){
+        return Rarity.Epic;
+    }
+    else{
+        return Rarity.Legendary;
+    }
+}
+
+function getReward():void {
+    //get score from server
+    let score = Math.floor(Math.random() * 30);
+
+    //get a gard depending on score and rarity
+    let rarity:Rarity = getRarityFromScore(score);
+    
+    //get random card from cardsJOSN
+    let json = JSON.parse(JSON.stringify(cardsJSON));
+    //shuffle json
+    for (let i = json.cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [json.cards[i], json.cards[j]] = [json.cards[j], json.cards[i]];
+    }
+    //get a random card of the right rarity
+    for(let i = 0; i < json.cards.length; i++){
+        if(json.cards[i].cardRarity == rarity){
+            let card:Card = {
+                cardTitle: json.cards[i].cardTitle,
+                cardText: json.cards[i].cardText,
+                cardRarity: json.cards[i].cardRarity as Rarity,
+                cardImage: json.cards[i].cardImage,
+                cardExpirationDate: new Date(),
+                color: json.cards[i].color,
+            }
+            cardReward.value = card;
+            break;
+        }
+    }
 }
 
 getQuestionsFromTheme()
