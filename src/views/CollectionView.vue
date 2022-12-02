@@ -1,6 +1,9 @@
 <template>
-    <div class="cardDisplay">
-        <CardComponent v-for="c in cards" :key="c.cardTitle" :card="c" />
+    <div>
+        <h1>Mes cartes</h1>
+        <div class="cardDisplay">
+            <CardComponent v-for="c in cards" :key="c.cardTitle" :card="c" />
+        </div>
     </div>
 </template>
 <script setup lang="ts">
@@ -36,7 +39,6 @@ onMounted(() => {
 </script>
 <style scoped lang="scss">
     .cardDisplay{
-        padding-top:5rem ;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -47,5 +49,19 @@ onMounted(() => {
         gap: 1rem;
         row-gap: 5rem;
 
+    }
+
+    h1{
+        background-image: linear-gradient(
+        to right,/* to add in parameter*/
+        #e1a1e3 0%,
+        #58214e 70%,
+        );
+    color:transparent;
+    font-size: 3rem;
+    -webkit-background-clip:text;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
     }
 </style>
