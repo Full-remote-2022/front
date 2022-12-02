@@ -29,7 +29,7 @@ theme.value = router.currentRoute.value.params.name;
 
 function getQuestionsFromTheme():void {
     //push 3 random questions from theme to questions
-    for(let i = 0; i < 3; i++){
+    for(let i = 1; i <= 5; i++){
         let question:Question = {
             questionID: i,
             questionText: "Question "+i,

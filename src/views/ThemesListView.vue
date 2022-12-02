@@ -13,7 +13,7 @@ import router from '@/router'
 let themes = ref<Theme[]>([])
 
 function getThemes(){
-    for (let i=0; i<4; i++){
+    for (let i=1; i<5; i++){
         themes.value.push(
             {nomTheme:"Theme "+i,
         nombreQuestions:5}
