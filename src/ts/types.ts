@@ -11,6 +11,14 @@ export interface Question {
     answers: Answer[],
 }
 
+export interface Card {
+    cardText: string,
+    cardTitle: string,
+    cardImage: string,
+    cardExpiratinoDate: Date,
+    cardRarity: Rarity,
+}
+
 export enum Rarity {
     Common = "common",
     Uncommon = "uncommon",

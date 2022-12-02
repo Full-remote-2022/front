@@ -25,9 +25,18 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { ref,onMounted } from 'vue'
+import { ref,onMounted,defineProps } from 'vue'
 import RarityTag from '@/components/RarityTag.vue';
-import { Rarity } from '@/ts/types';
+import { Rarity, Card } from '@/ts/types';
+
+//props
+//eslint-disable-next-line
+const props = defineProps({
+    card: {
+        type: Object as () => Card,
+        required: true
+    }
+})
 //ref to div
 const card = ref<HTMLInputElement | null>(null)
 let hover = ref(true)
@@ -35,9 +44,12 @@ onMounted(() => {
     //safe guard
     if(card.value==null) return;
 
+    //client width + scroll width
     let w = card.value.clientWidth;
     let h = card.value.clientHeight;
     let b = card.value.getBoundingClientRect();
+   
+    
     UpdateValues(null);
     card.value.addEventListener("mousemove", (e) => {
         UpdateValues(e);
@@ -46,15 +58,18 @@ onMounted(() => {
     function UpdateValues(e: MouseEvent | null):void{
         let X: number;
         let Y: number;
+        if(card.value==null) return;
         if(e==null){
             X=0.5;
             Y=0.5;
         }else{
 
-            X = (e.clientX - b.left) / w;
-            Y = (e.clientY - b.top) / h;
+            //get mouse position relative to card position in page and scroll position
+            X = (e.clientX - b.left + window.scrollX) / w;
+            Y = (e.clientY - b.top + window.scrollY) / h;
         }
-
+        
+        console.log(X,Y);
         let rX = -(X - 0.5) * 26;
         let rY = (Y - 0.5) * 26;
 
