@@ -6,15 +6,19 @@ import { Answer } from '@/ts/types'
 export const useStore = defineStore('main', {
     state: () => {
         return {
-            responses: [] as Answer[],
+            token: '',
         }
       },
       actions: {
-        addResponse(answer: Answer) {
-          this.responses.push(answer)
+        setToken(token: string) {
+          this.token = token
         },
-        resetResponses() {
-          this.responses = []
+
+        isConnected() {
+          return this.token !== ''
+        },
+        Disconect() {
+          this.token = ''
         }
 
       },

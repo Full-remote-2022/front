@@ -7,13 +7,14 @@
        <label for="password_confirm">Confirm your password</label>
        <input ref="password_confirm" id="password_confirm" type="password" placeholder="confirm your password">
        <div id="show-password-sign"><input ref="hide_and_reveal_sign" type="checkbox" style= "cursor: pointer; margin: 0;" @click="hide_reveal"><label for="password_confirm">Show Password</label></div>
-       <button ref="sign_up" id="sign_up" @click="whenshitdonthappen">Sign Up</button>
+       <button ref="sign_up" id="sign_up" @click="validateForm">Sign Up</button>
        <p ref="error_message"></p>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import router from '@/router'
 
 const username = ref<HTMLInputElement | null>(null);
 const password = ref<HTMLInputElement | null>(null);
@@ -22,12 +23,13 @@ const sign_up = ref<HTMLInputElement | null>(null);
 const error_message = ref<HTMLInputElement | null>(null);
 
 
-function whenshitdonthappen(){
+function validateForm(){
     if(username.value==null || password.value==null || password_confirm.value==null || sign_up.value==null || error_message.value==null) 
     return;
     if (username.value.value !== "" && password.value.value!=="" && password_confirm.value.value!=="")
         if (password.value.value===password_confirm.value.value){
             error_message.value.innerText="You have signed up !"
+            registerUser(username.value.value,password.value.value);
         }
         else{
             error_message.value.innerText="Please make sure to have a correct e-mail or enter a valid password";
@@ -35,6 +37,11 @@ function whenshitdonthappen(){
     else {
         error_message.value.innerText="Please make sure to have a correct e-mail or enter a valid password";
     } 
+}
+
+function registerUser(username:string,password:string){
+    //redirect to login page
+    router.push('/login');
 }
 
 function hide_reveal(){

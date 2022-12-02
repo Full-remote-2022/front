@@ -5,14 +5,19 @@
         <label for="password_login">Password</label>
        <input ref="password_login" id="password_login" type="password" placeholder="enter your password">
        <div id="show-password"><input ref="hide_and_reveal" class="show_password" type="checkbox" style= "cursor: pointer;" @click="hide_reveal"><label for="password_login">Show Password</label></div>
-       <button>Log In</button>
+       <button @click="login">Log In</button>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import {useStore} from '@/stores/store'
+import router from '@/router'
+
+const store = useStore();
 
 const password_login = ref<HTMLInputElement | null>(null);
+const username_login = ref<HTMLInputElement | null>(null);
 
 function hide_reveal(){
     
@@ -24,6 +29,17 @@ function hide_reveal(){
         password_login.value.type = "password";
     }
 }
+
+function login(){
+    //if pwd or username is empty return
+    if (password_login.value?.value=="" || username_login.value?.value=="") return;
+    //login to serv
+    //TODO
+    store.token="token";
+    //redirect to home
+    router.push('/');
+}
+
 </script>
 
 <style scoped lang="scss">

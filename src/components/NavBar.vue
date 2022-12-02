@@ -1,23 +1,28 @@
 <template>
     <nav>
         <!-- <p>LOGO</p> -->
-        <router-link to="/themes">
+        <router-link to="/themes" v-if="store.isConnected()">
             <img src="@/assets/theme.png" alt="themes">
             <p>Themes</p>
         </router-link>
-        <router-link to="/collection">
+        <router-link to="/collection" v-if="store.isConnected()">
             <img src="@/assets/collection.png" alt="collection">
             <p>Collection</p>
         </router-link>
-        <router-link to="/play">
+        <router-link to="/play" v-if="store.isConnected()">
             <img src="@/assets/jouer.png" alt="collection">
             <p>Play</p>
         </router-link>
-        <router-link to="/logIn">Log In</router-link>
-        <router-link to="/signUp">Sign Up</router-link>
+        <router-link to="/logIn" v-if="store.isConnected()" @click="store.Disconect()">
+            <img src="@/assets/logout.svg" alt="collection">
+            <p>Play</p></router-link>
+        <router-link to="/logIn" v-if="!store.isConnected()">Log In</router-link>
+        <router-link to="/signUp" v-if="!store.isConnected()">Sign Up</router-link>
     </nav>
 </template> 
 <script setup lang="ts">
+import {useStore} from '@/stores/store'
+const store = useStore();
 
 </script>
 <style lang="scss" scoped>
