@@ -1,4 +1,5 @@
 <template>
+    <p>Répondez aux questions pour obtenir des cartes, Obtenez de meilleur cartes en répondant sans faire d'erreur, Utilisez ces cartes dans un match contre un adversaire !</p>
     <div class="listOfThemes">
         <ThemePreviewComponent  v-for="Th in themes" :key="Th.nomTheme" :theme="Th" @click="goToTheme(Th)"></ThemePreviewComponent>
     </div>
