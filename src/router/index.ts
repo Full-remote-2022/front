@@ -45,4 +45,16 @@ const router = createRouter({
   routes
 })
 
+const protectedRoutes = ['collection', 'play', 'themes', 'theme'];
+
+//redirect to home if the route is in the list of protected routes and the user is not logged in
+router.beforeEach((to, from, next) => {
+  if (protectedRoutes.includes(to.name as string) && !localStorage.getItem('token')) {
+    next({ name: 'home' })
+  } else {
+    next()
+  }
+})
+
+
 export default router
