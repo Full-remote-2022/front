@@ -38,4 +38,12 @@ getThemes()
         width: 100%;
         margin-top: 2rem;
     }
+    p{
+        text-align: center;
+        font-size: 1.5rem;
+        width: 80%;
+        margin: 0 auto;
+        font-style: italic;
+        margin-top: 1rem;
+    }
 </style>
