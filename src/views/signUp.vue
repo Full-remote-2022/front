@@ -3,16 +3,17 @@
         <label for="username">Username</label>
        <input ref="username" id="username" type="text" placeholder="enter a username">
         <label for="password">Password</label>
-       <input ref="password" id="password" type="text" placeholder="chose a password">
+       <input ref="password" id="password" type="password" placeholder="chose a password">
        <label for="password_confirm">Confirm your password</label>
-       <input ref="password_confirm" id="password_confirm" type="text" placeholder="confirm your password">
+       <input ref="password_confirm" id="password_confirm" type="password" placeholder="confirm your password">
+       <div id="show-password-sign"><input ref="hide_and_reveal_sign" type="checkbox" style= "cursor: pointer; margin: 0;" @click="hide_reveal"><label for="password_confirm">Show Password</label></div>
        <button ref="sign_up" id="sign_up" @click="whenshitdonthappen">Sign Up</button>
        <p ref="error_message"></p>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref,onMounted } from 'vue'
+import { ref } from 'vue'
 
 const username = ref<HTMLInputElement | null>(null);
 const password = ref<HTMLInputElement | null>(null);
@@ -36,11 +37,28 @@ function whenshitdonthappen(){
     } 
 }
 
+function hide_reveal(){
+    if (password.value==null || password_confirm.value==null){
+        return;}
+    if (password.value.type === "password"){
+        password_confirm.value.type = "text";
+        password.value.type="text";
+    }
+    else{
+        password.value.type = "password";
+        password_confirm.value.type = "password";
+
+    }
+}
+
 
 
 </script>
 
 <style scoped lang="scss">
+
+
+
 div {
     display:flex;
     flex-direction: column;
@@ -71,5 +89,14 @@ button{
 
 button:hover {
     background-color: rgb(44, 68, 139);
+}
+
+
+#show-password-sign{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    margin-bottom:10px;
 }
 </style>
