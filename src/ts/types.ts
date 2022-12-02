@@ -17,6 +17,7 @@ export interface Card {
     cardImage: string,
     cardExpirationDate: Date,
     cardRarity: Rarity,
+    color: string,
 }
 
 export enum Rarity {

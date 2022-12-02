@@ -29,21 +29,11 @@ function getCards():void {
             cardRarity: json.cards[i].cardRarity as Rarity,
             cardImage: json.cards[i].cardImage,
             cardExpirationDate: new Date(),
+            color: json.cards[i].color,
         }
         console.log(card);
         cards.value.push(card);
     }
-    // for(let i = 0; i < 10; i++){
-    //     let card:Card = {
-    //         cardText: "This is a card",
-    //         cardTitle: "Card",
-    //         cardRarity: Rarity.Common,
-    //         cardImage: "https://i.imgur.com/1ZQ3Z0M.png",
-    //         cardExpirationDate: new Date(),
-
-    //     }
-    //     cards.value.push(card);
-    // }
 }
 
 //on component mount
@@ -65,6 +55,7 @@ onMounted(() => {
         margin: auto;
         gap: 1rem;
         row-gap: 5rem;
+        margin-bottom:150px ;
 
     }
 

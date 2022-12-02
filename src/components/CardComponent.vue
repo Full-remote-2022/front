@@ -4,7 +4,7 @@
     @mouseleave="hover = false"
     >
         <div class="card__wrapper">
-            <div :class="{'card__3d':true,'enable':hover}">
+            <div :class="{'card__3d':true,'enable':hover}" :style="{'background-color':cardProp.color}">
                 <div class="topHeader">
                     <RarityTag :rarity="cardProp.cardRarity"/>
                     <p>{{cardProp?.cardTitle}}</p>
@@ -18,7 +18,13 @@
                 </div>
                 <!--layers for visual effect-->
                 <div :class="{'card__layer1':true,'hiden_layout':false}"></div>
-                <div :class="{'card__layer2':true,'hiden_layout':false}"></div>
+                <div v-if="IsMoreThanRare(cardProp.cardRarity)">
+                    <div v-if="(cardProp.cardRarity==Rarity.Rare)" :class="{'card__layer2':true,'variant1':true}"></div>
+                    <div v-if="(cardProp.cardRarity==Rarity.Legendary)" :class="{'card__layer2':true}"></div>
+                    <div v-if="(cardProp.cardRarity==Rarity.Epic)" :class="{'card__layer2':true,'variant2':true}"></div>
+
+                </div>
+                
             </div>
         </div>
     </div>
@@ -36,6 +42,10 @@ const props = defineProps({
         required: true
     }
 })
+
+function IsMoreThanRare(rarity:Rarity):boolean{
+    return rarity == Rarity.Epic || rarity == Rarity.Legendary || rarity == Rarity.Rare;
+}
 //ref to div
 const card = ref<HTMLInputElement | null>(null)
 let hover = ref(true)
@@ -97,7 +107,7 @@ $barwidth: 0.5rem;
 .card {
     --step: 5%;
     --pattern: url("@/assets/galaxy.jpg") center / 75%;
-
+    --pattern2: url("@/assets/shards.jpg") center / 75%;
     --rainbow: repeating-linear-gradient(
         0deg,
         rgb(255, 119, 115) calc(var(--step) * 1),
@@ -115,6 +125,12 @@ $barwidth: 0.5rem;
         hsl(180, 10%, 60%) 3.8%,
         hsl(180, 10%, 60%) 4.5%,
         hsl(180, 10%, 60%) 5.2%,
+        #0e152e 10%,
+        #0e152e 12%
+        )
+        var(--bg-x) var(--bg-y) / 300%;
+    --basic: linear-gradient(
+        #0e152e 0%,
         #0e152e 10%,
         #0e152e 12%
         )
@@ -226,17 +242,28 @@ $barwidth: 0.5rem;
 
   background-blend-mode: hue, hue, hard-light, overlay;
   background: var(--pattern), var(--rainbow), var(--diagonal);
-}
-/* second crazy blend  */
-.card__layer2:after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--pattern), var(--rainbow), var(--diagonal), var(--shade);
-  mix-blend-mode: exclusion;
-  background-size: 75%, 200% 400%, 800%, 200%;
-  background-position: center, 0% var(--bg-y),
-    calc(var(--bg-x) * -1) calc(var(--bg-y) * -1), var(--bg-x) var(--bg-y);
-  background-blend-mode: soft-light, hue, hard-light;
+  &.variant1 {
+    background: var(--pattern2), var(--rainbow) , var(--basic);
+    &::after{
+        background: var(--pattern2), var(--rainbow) , var(--basic), var(--shade);
+    }
+  }
+  &.variant2 {
+    background: var(--pattern2), var(--rainbow), var(--diagonal);
+    &::after{
+        background: var(--pattern2), var(--rainbow), var(--diagonal), var(--shade);
+    }
+  }
+  &::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--pattern), var(--rainbow), var(--diagonal), var(--shade);
+    mix-blend-mode: exclusion;
+    background-size: 75%, 200% 400%, 800%, 200%;
+    background-position: center, 0% var(--bg-y),
+        calc(var(--bg-x) * -1) calc(var(--bg-y) * -1), var(--bg-x) var(--bg-y);
+    background-blend-mode: soft-light, hue, hard-light;
+  }
 }
 </style>
