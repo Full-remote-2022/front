@@ -2,7 +2,7 @@
     <div>
         <h1>Mes cartes</h1>
         <div class="cardDisplay">
-            <CardComponent v-for="c in cards" :key="c.cardTitle" :card="c" />
+            <CardComponent v-for="c in cards" :key="c.cardTitle" :cardProp="c" />
         </div>
     </div>
 </template>
@@ -11,20 +11,27 @@ import CardComponent from '@/components/CardComponent.vue'
 import { ref } from 'vue'
 import { Card, Rarity } from '@/ts/types'
 import { onMounted } from 'vue';
-
+//open file
+import {cardsJSON} from '@/assets/cards';
 //get card from server
 const cards = ref<Card[]>([]);
 
 function getCards():void {
-    for(let i = 0; i < 10; i++){
-        let card:Card = {
-            cardText: "This is a card",
-            cardTitle: "Card",
-            cardRarity: Rarity.Common,
-            cardImage: "https://i.imgur.com/1ZQ3Z0M.png",
-            cardExpirationDate: new Date(),
 
+    let json = JSON.parse(JSON.stringify(cardsJSON));
+    //push cards to cards
+    console.log(json)
+    for(let i = 0; i < json.cards.length; i++){
+        console.log("card "+i);
+        let card:Card = {
+            cardTitle: json.cards[i].cardTitle,
+            cardText: json.cards[i].cardText,
+            cardRarity: json.cards[i].cardRarity as Rarity,
+            cardImage: json.cards[i].cardImage,
+            cardExpirationDate: new Date(),
+            color: json.cards[i].color,
         }
+        console.log(card);
         cards.value.push(card);
     }
 }
@@ -48,6 +55,7 @@ onMounted(() => {
         margin: auto;
         gap: 1rem;
         row-gap: 5rem;
+        margin-bottom:150px ;
 
     }
 

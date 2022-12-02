@@ -5,7 +5,7 @@
         <QuestionView v-for="(q,i) in questions" :key="q.questionID" :question="q"  v-show="(current==i)" @selected="nextQuestion" />
         </section>
         <section v-else>
-            <CardComponent :card="cardReward" v-if="(cardReward!=null)" />
+            <CardComponent :cardProp="cardReward" v-if="(cardReward!=null)" />
             <button @click="goToThemeList"> <label>Collecter</label></button>
         </section>
     </div>
@@ -16,7 +16,7 @@ import { ref } from 'vue'
 import router from '@/router'
 import { Answer, Question, Card, Rarity } from '@/ts/types'
 import CardComponent from '@/components/CardComponent.vue'
-
+import {cardsJSON} from '@/assets/cards'
 //get theme from router params
 let theme = ref<any>("") ;
 let current = ref<number>(0);
@@ -79,15 +79,17 @@ function goToThemeList():void {
 }
 
 function getReward():void {
-    //get card from server
+   //get random card from cardsJOSN
+    let json = JSON.parse(JSON.stringify(cardsJSON));
+    let i = Math.floor(Math.random() * json.cards.length);
     let card:Card = {
-        cardText: "This is a card",
-        cardTitle: "Card",
-        cardRarity: Rarity.Common,
-        cardImage: "https://i.imgur.com/1ZQ3Z0M.png",
+        cardTitle: json.cards[i].cardTitle,
+        cardText: json.cards[i].cardText,
+        cardRarity: json.cards[i].cardRarity as Rarity,
+        cardImage: json.cards[i].cardImage,
         cardExpirationDate: new Date(),
-
-    };
+        color: json.cards[i].color,
+    }
     cardReward.value = card;
 }
 
