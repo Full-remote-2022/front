@@ -46,53 +46,50 @@ let question = ref<Question>({
 div {
     display: flex;
     flex-direction: column;
-
-    border: $div_border;
-    border-radius: $div_border_radius;
-
-    background-color: $background_color_question;
+    padding-top: 2rem;
 }
 
 h2{ 
     background-image: linear-gradient(
 	to right,/* to add in parameter*/
-	#462523 0, /* to add in parameter*/
-    #cb9b51 22%, /* to add in parameter*/
-	#f6e27a 45%,/* to add in parameter*/
-	#f6f2c0 50%,/* to add in parameter*/
-	#f6e27a 55%,/* to add in parameter*/
-	#cb9b51 78%,/* to add in parameter*/
-	#462523 100%/* to add in parameter*/
+	#e1a1e3 0%,
+    #58214e 90%,
 	);
-   color:transparent;/* to add in parameter*/
-   -webkit-background-clip:text;/* to add in parameter*/
+   color:transparent;
+   font-size: 5rem;
+   -webkit-background-clip:text;
+   text-align: center;
 
-   -webkit-text-stroke-width: 1px; /* to add in parameter*/
-   -webkit-text-stroke-color: black; /* to add in parameter*/
 }
 
 section{
-    background-color: $background_color_answers;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    gap: 1rem;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
 }
 
 .answer {
-    background-color: $background_color_oneanswer;
-    color:$color_oneanswer;
-    border: $border_oneanswer;
-    border-radius: $border_radius_oneanswer;
+    //blurry glass effect
+    background-color: white;
+    width: 90%;
+    max-width: 300px;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    font-size: min(10vw, 2rem);
+    padding: 2rem;
+    color: #b074b2;
+    font-weight: bold;
+    cursor: pointer;
 
-    padding: $padding_oneanswer;
-    margin: $margin_oneanswer;
+    height: fit-content;
 
-    transition: $transition_oneanswer ; 
-    box-shadow: $shadow_oneanswer;
 
     &:hover {
-    transform: $transforme_oneanswer; /* to add in parameter*/
+    transform: scale(1.1);
 }
 
 }

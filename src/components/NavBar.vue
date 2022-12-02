@@ -23,6 +23,7 @@ nav {
 nav a {
     font-weight: bold;
     color: $dark;
+    font-size: 1.5rem;
     text-decoration: none;
 }
 
