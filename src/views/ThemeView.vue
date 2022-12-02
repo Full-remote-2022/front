@@ -122,6 +122,7 @@ button{
         -webkit-background-clip:text;
         text-align: center;
         border:transparent;
+        cursor: pointer;
     }
 
     
